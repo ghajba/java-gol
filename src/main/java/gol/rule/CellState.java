@@ -1,4 +1,5 @@
 package gol.rule;
+
 /**
  * @author Klaus Bayrhammer
  */
