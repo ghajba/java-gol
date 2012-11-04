@@ -67,4 +67,17 @@ public class BoardTest
         board.getCellAt(0, 0).setCurrentState(CellState.ALIVE);
         assertEquals(1, board.getCellAt(1, 1).getNumberOfAliveNeighbors());
     }
+
+    @Test
+    public void iterateBoard()
+    {
+        Board board = new Board(2, 2);
+        board.getCellAt(0, 0).setCurrentState(CellState.ALIVE);
+        board.getCellAt(1, 0).setCurrentState(CellState.ALIVE);
+        board.getCellAt(0, 1).setCurrentState(CellState.ALIVE);
+
+        board.nextRound();
+
+        assertEquals(CellState.ALIVE, board.getCellAt(1, 1).getCurrentState());
+    }
 }

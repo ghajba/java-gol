@@ -4,15 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 import gol.rule.CellState;
+import gol.rule.RuleEngine;
 
 /**
  * @author Klaus Bayrhammer
  */
 public class Cell
 {
-    private final Point coordinates;
     private CellState currentState = CellState.DEAD;
+    private CellState nextState;
+    private final Point coordinates;
+
     private Set<Cell> neighbors = new HashSet<Cell>();
+    private RuleEngine ruleEngine = new RuleEngine();
 
     public Cell(int x, int y)
     {
@@ -62,5 +66,15 @@ public class Cell
             }
         }
         return aliveNeighbors;
+    }
+
+    public void prepareIterate()
+    {
+        nextState = ruleEngine.nextState(currentState, getNumberOfAliveNeighbors());
+    }
+
+    public void iterate()
+    {
+        currentState = nextState;
     }
 }

@@ -25,4 +25,14 @@ public class CellTest
 
         assertEquals(0, cell.getNumberOfAliveNeighbors());
     }
+
+    @Test
+    public void prepareIteration()
+    {
+        Cell cell = new Cell(1, 1);
+        cell.setCurrentState(CellState.ALIVE);
+        cell.prepareIterate();
+        cell.iterate();
+        assertEquals(CellState.DEAD, cell.getCurrentState());
+    }
 }

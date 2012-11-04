@@ -48,4 +48,26 @@ public class Board
         }
         return CELL_OUTSIDE_BOARD;
     }
+
+    public void nextRound()
+    {
+        prepareCellsForNextRound();
+        iterateCellsToNextRound();
+    }
+
+    private void iterateCellsToNextRound()
+    {
+        for (Cell cell : board)
+        {
+            cell.iterate();
+        }
+    }
+
+    private void prepareCellsForNextRound()
+    {
+        for (Cell cell : board)
+        {
+            cell.prepareIterate();
+        }
+    }
 }
