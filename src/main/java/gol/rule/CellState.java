@@ -15,7 +15,7 @@ public enum CellState
         @Override
         CellState nextState(Population population)
         {
-            return (population == Population.SUFFICIENT || population == Population.OPTIMAL) ? CellState.ALIVE : CellState.DEAD;
+            return population == Population.UNLIVABLE ? CellState.DEAD : CellState.ALIVE;
         }
     };
 
